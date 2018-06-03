@@ -1,3 +1,8 @@
+.navbar-brand img {
+    height: 55px;
+    width: 130px;
+}
+
 .sidebar {
     width: 0;
     height: 100vh;
@@ -13,9 +18,10 @@
     border-radius: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 .sidebar .sidebar-links .sidebar-link:hover {
-    background-color: #e83e8c;
+    background-color: #007bff;
 }
 .sidebar .sidebar-links .sidebar-link a {
     color: white;
@@ -146,4 +152,16 @@ body.show-sidebar .hamburger:hover:before {
     display: block;
     -webkit-transform: translate3d(-100px,0,0);
     -webkit-transition: all .35s ease-in-out;
+}
+
+.rumours .all-rumours, .rumours .author-rumours {
+    background-color: #b0d6d9;
+    border-radius: 0px;
+    font-family: cursive;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+main.rumour-list .active {
+    background-color: #73c5cc;
+    border-color: #73c5cc;
 }
