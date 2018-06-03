@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Create rumour</title>
 
     <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
 </head>
 <body>
 <div id="app">
@@ -109,8 +110,52 @@
                 </div>
             </div>
         </nav>
-        <main class="container mt-5">
+        <div class="container">
+            <div class="alert alert-success mt-3" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="alert-heading">About character</h4>
+                <p>
+                <blockquote>
+                    Rumour
+                </blockquote>
+                </p>
+            </div>
+        </div>
+        <main class="container mt-3 mb-3 create-rumour">
+            <div class="card p-4">
+                <img src="../images/entre-nous-1200x330.jpg" alt="" class="mb-2">
+                <h5 class="card-title">Create/edit rumour</h5>
+                <div class="card-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="character-select">
+                                Select character
+                            </label>
+                            <select name="character-select" id="character-select" class="form-control">
+                                <option value="Name1">Name1</option>
+                                <option value="Name2">Name2</option>
+                                <option value="Name3">Name3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rumour-ttl">
+                                Rumour ttl
+                            </label>
+                            <input type="text" class="form-control" name="rumour-ttl" id="rumour-ttl" data-provide="datepicker">
+                        </div>
 
+                        <div class="form-group">
+                            <label for="rumour-text">Rumour text</label>
+                            <textarea class="form-control" id="rumour-text" rows="3"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary m-2">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </main>
     </div>
 </div>
@@ -120,6 +165,7 @@
         crossorigin="anonymous">
 </script>
 <script src="../js/lib/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src="../js/script.js"></script>
 
 </body>

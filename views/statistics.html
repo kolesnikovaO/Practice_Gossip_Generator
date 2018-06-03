@@ -109,35 +109,35 @@
                 </div>
             </div>
         </nav>
-        <div class="rumours m-auto">
-            <div class="card w-100 all-rumours">
+        <div class="rumours ml-auto mr-auto mt-3">
+            <div class="card w-100 all-rumours pr-3">
                 <div class="card-body">
                     <p class="card-text">Всього чуток: 100</p>
                 </div>
             </div>
 
-            <div class="card w-50 author-rumours">
+            <div class="card w-50 author-rumours pr-3">
                 <div class="card-body">
                     <p class="card-text">Чуток автора: 50</p>
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="mt-3 ml-auto mr-auto text-center">
+        <hr>
+        <div class="container">
+            <div class="mt-3 ml-auto mr-auto row">
+                <div class="col-7 text-right">
                     <h3>Рейтинг персонажів за кількістю пліток</h3>
+                </div>
+                <div class="col-4 text-left">
                     <select class="custom-select">
                         <option value="all">За весь час</option>
                         <option value="day">За добу</option>
                         <option value="hour">За годину</option>
                     </select>
-                    <canvas id="statistics-canvas" width="750" height="300" class="m-auto" data-canvas-data='[{"name": "Name1", "qty": 3},{"name": "Name2", "qty": 15},{"name": "Name2", "qty": 5}, {"name": "Name4", "qty": 10}, {"name": "Name5", "qty": 20}]'></canvas>
                 </div>
+                <canvas id="statistics-canvas" width="750" height="300" class="m-auto" data-canvas-data='[{"name": "Name1", "qty": 3},{"name": "Name2", "qty": 15},{"name": "Name2", "qty": 5}, {"name": "Name4", "qty": 10}, {"name": "Name5", "qty": 20}]'></canvas>
             </div>
         </div>
-        <main class="container mt-5">
-
-        </main>
     </div>
 </div>
 
