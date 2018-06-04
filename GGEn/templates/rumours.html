@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rumours</title>
+
+    <link href="../static/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="sidebar-widget">
+                    <button type="button" class="hamburger" data-toggle="offcanvas">
+                        <span class="hamb-top"></span>
+                        <span class="hamb-middle"></span>
+                        <span class="hamb-bottom"></span>
+                    </button>
+                    <div class="sidebar">
+                        <ul class="sidebar-links list-group">
+                            <li class="sidebar-link list-group-item"><a href="rumours.html">Rumours</a></li>
+                            <li class="sidebar-link list-group-item"><a href="create-rumour.html">Create rumour</a></li>
+                            <li class="sidebar-link list-group-item"><a href="characters.html">Characters</a></li>
+                            <li class="sidebar-link list-group-item"><a href="create-character.html">Create character</a></li>
+                            <li class="sidebar-link list-group-item"><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="navbar-brand" href="home.html"><img src="../static/images/logo.png" alt="Logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navigation">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#registrationModal">
+                                Sign in
+                            </button>
+                            <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="registrationModalLabel">Registration</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-body">
+                                                <form class="form" role="form" autocomplete="off" id="formRegistration" novalidate="" method="POST">
+                                                    <div class="form-group">
+                                                        <label for="email">Email</label>
+                                                        <input type="email" class="form-control form-control-lg rounded-0" name="email" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="username">Username</label>
+                                                        <input type="text" class="form-control form-control-lg rounded-0" name="username" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password-1">Password</label>
+                                                        <input type="password" class="form-control form-control-lg rounded-0" name="password-1" required="" autocomplete="new-password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password-2">Repeat password</label>
+                                                        <input type="password" class="form-control form-control-lg rounded-0" name="password-2" required="" autocomplete="new-password">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success btn-lg" id="btnRegistration">Registrate</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                                Log in
+                            </button>
+                            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" class="form-control form-control-lg rounded-0" name="email" id="email" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" class="form-control form-control-lg rounded-0" name="password" id="password" required="" autocomplete="new-password">
+                                                </div>
+                                                <button type="submit" class="btn btn-success btn-lg" id="btnLogin">Login</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="alert alert-success mt-3" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="alert-heading">About character</h4>
+                <p>
+                <blockquote>
+                    Rumour
+                </blockquote>
+                </p>
+            </div>
+        </div>
+        <main class="container mt-5 rumour-list">
+            <div class="row">
+                <div class="col">
+                    <h3>Character list</h3>
+                </div>
+                <div class="col">
+                    <h3>Rumour list</h3>
+                </div>
+                <div class="col">
+                    <h3>Rumour</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="list-group col-4" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#character-all" role="tab">All</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name1" role="tab">Name1</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name2" role="tab">Name2</a>
+                </div>
+                <div class="tab-content col-4">
+                    <div class="tab-pane active" id="character-all" role="tabpanel">
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#character-Name1-rumour-1" role="tab">Rumour 1-1</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name1-rumour-2" role="tab">Rumour 1-2</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name1-rumour-3" role="tab">Rumour 1-3</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name2-rumour-1" role="tab">Rumour 2-1</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name2-rumour-2" role="tab">Rumour 2-2</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name2-rumour-3" role="tab">Rumour 2-3</a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="character-Name1" role="tabpanel">
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#character-Name1-rumour-1" role="tab">Rumour 1-1</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name1-rumour-2" role="tab">Rumour 1-2</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name1-rumour-3" role="tab">Rumour 1-3</a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="character-Name2" role="tabpanel">
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#character-Name2-rumour-1" role="tab">Rumour 2-1</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name2-rumour-2" role="tab">Rumour 2-2</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#character-Name2-rumour-3" role="tab">Rumour 2-3</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content col-4">
+                    <div class="tab-pane active" id="character-Name1-rumour-1" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title character-name">Name1</h5>
+                                <h6 class="card-subtitle mb-2 text-muted rumour-ttl">TTL: 1 day</h6>
+                                <p class="card-text rumour-text">
+                                    Rumour text 1-1
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="character-Name1-rumour-2" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title character-name">Name1</h5>
+                                <h6 class="card-subtitle mb-2 text-muted rumour-ttl">TTL: 1 day</h6>
+                                <p class="card-text rumour-text">
+                                    Rumour text 1-2
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="character-Name1-rumour-3" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title character-name">Name1</h5>
+                                <h6 class="card-subtitle mb-2 text-muted rumour-ttl">TTL: 1 day</h6>
+                                <p class="card-text rumour-text">
+                                    Rumour text 1-3
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="character-Name2-rumour-1" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title character-name">Name2</h5>
+                                <h6 class="card-subtitle mb-2 text-muted rumour-ttl">TTL: 1 day</h6>
+                                <p class="card-text rumour-text">
+                                    Rumour text 2-1
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="character-Name2-rumour-2" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title character-name">Name2</h5>
+                                <h6 class="card-subtitle mb-2 text-muted rumour-ttl">TTL: 1 day</h6>
+                                <p class="card-text rumour-text">
+                                    Rumour text 2-2
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="character-Name2-rumour-3" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title character-name">Name2</h5>
+                                <h6 class="card-subtitle mb-2 text-muted rumour-ttl">TTL: 1 day</h6>
+                                <p class="card-text rumour-text">
+                                    Rumour text 2-3
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+<script src="../static/js/lib/bootstrap.js"></script>
+<script src="../static/js/script.js"></script>
+
+</body>
+</html>
