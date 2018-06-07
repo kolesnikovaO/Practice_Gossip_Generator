@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+﻿{% load staticfiles %}
 
-    <link href="../static/css/lib/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/styles.css" rel="stylesheet">
-</head>
-<body>
+{% block title %} Site Stat {% endblock title %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link href="../static/css/lib/bootstrap.min.css" rel="stylesheet">
+{% endblock links %}
+
+
+{% block content %}
 <div id="app">
     <div class="content">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -112,13 +113,13 @@
         <div class="rumours ml-auto mr-auto mt-3">
             <div class="card w-100 all-rumours pr-3">
                 <div class="card-body">
-                    <p class="card-text">Всього чуток: 100</p>
+                    <p class="card-text">Всього чуток: <span>{{ all_gossip_num }}</span></p>
                 </div>
             </div>
 
             <div class="card w-50 author-rumours pr-3">
                 <div class="card-body">
-                    <p class="card-text">Чуток автора: 50</p>
+                    <p class="card-text">Чуток автора: <span>{{ available_gossip_num }}</span></p>
                 </div>
             </div>
         </div>
@@ -148,5 +149,4 @@
 <script src="../static/js/lib/bootstrap.js"></script>
 <script src="../static/js/script.js"></script>
 
-</body>
-</html>
+{% endblock content %}
