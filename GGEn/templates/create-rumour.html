@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create rumour</title>
+{% load staticfiles %}
 
+{% block title %} Site Stat {% endblock title %}
+
+{% block links %}
     <link href="../static/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
-</head>
-<body>
+{% endblock links %}
+
+
+{% block content %}
 <div id="app">
     <div class="content">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -117,9 +117,11 @@
                 </button>
                 <h4 class="alert-heading">About character</h4>
                 <p>
+                {% for ch in all_characters %}
                 <blockquote>
-                    Rumour
+                   {{ about }}
                 </blockquote>
+                {% endfor %}
                 </p>
             </div>
         </div>
@@ -128,32 +130,39 @@
                 <img src="../static/images/entre-nous-1200x330.jpg" alt="" class="mb-2">
                 <h5 class="card-title">Create/edit rumour</h5>
                 <div class="card-body">
-                    <form action="">
+                    <a href="{% url 'gossip_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                    {% block forms %}
+                    <h1>New gossip</h1>
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                         <div class="form-group">
-                            <label for="character-select">
-                                Select character
-                            </label>
-                            <select name="character-select" id="character-select" class="form-control">
-                                <option value="Name1">Name1</option>
-                                <option value="Name2">Name2</option>
-                                <option value="Name3">Name3</option>
-                            </select>
+                        <label for="character-select">
+                            Select character
+                        </label>
+                        <select name="character-select" id="character-select" class="form-control">
+                            {% for ch in all_characters %}
+                            <option value="{{ ch.name }}" id="character_id">{{ ch.name }}</option>
+                            {% endfor %}
+                        </select>
                         </div>
                         <div class="form-group">
-                            <label for="rumour-ttl">
-                                Rumour ttl
-                            </label>
-                            <input type="text" class="form-control" name="rumour-ttl" id="rumour-ttl" data-provide="datepicker">
+                        <label for="rumour-ttl">
+                            Rumour ttl
+                        </label>
+                        <input type="text" class="form-control" name="expire_date" id="rumour-ttl" data-provide="datepicker">
                         </div>
-
-                        <div class="form-group">
-                            <label for="rumour-text">Rumour text</label>
-                            <textarea class="form-control" id="rumour-text" rows="3"></textarea>
+                         <div class="form-group">
+                             <label for="rumour-text">Rumour text</label>
+                             <textarea class="form-control" id="rumour-text" rows="3" name='gossip_text'></textarea>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary m-2">Submit</button>
-                        </div>
+                        <button type="submit" class="save btn btn-default">Save</button>
                     </form>
+                    {% endblock %}
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary m-2">Submit</button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -167,6 +176,4 @@
 <script src="../static/js/lib/bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src="../static/js/script.js"></script>
-
-</body>
-</html>
+{% endblock content %}

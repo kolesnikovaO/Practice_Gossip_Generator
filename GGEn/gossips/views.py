@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from . import forms
 from .models import Gossip
+from .models import Character
+from .forms import GossipForm
+from .forms import CharForm
+from django.http import HttpResponseRedirect, HttpResponse
+from datetime import datetime
 from . import models
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-
+from django.contrib import messages
 
 """def passwordHash(password):
     m = hashlib.md15()
@@ -69,10 +74,43 @@ def myprofile(request, acttype=None):
 def mystatistic(request):
 	return render(request, "MyStat.html")
 
-
 def home(request):
 	return render(request, "create-rumour.html")
 
+def get_all_characters(request):
+	all_characters = Character.objects.all()
+	char_name = request.GET.get('character_id')
+	about = 'character'
+	for ch in all_characters:
+		if ch.name == char_name:
+			about = ch.about
+			break
+	return render (request, "create-rumour.html", {'all_characters' : all_characters, 'about': char_name})
+
+def gossip_new(request):
+	if request.method == "POST":
+		form = GossipForm(request.POST)
+		if form.is_valid():
+			gossip = form.save(commit=False)
+			gossip.create_date="2018-06-29"
+			gossip.is_enabled=True
+			gossip.user_id = request.user
+			gossip.save()
+			return render(request, 'gossip-edit.html',{'form': form})
+	else:
+		form = GossipForm()
+	return render(request, 'gossip-edit.html', {'form': form})
+
+def char_new(request):
+	if request.method == "POST":
+		ch_form = CharForm(request.POST)
+		if ch_form.is_valid():
+			character = ch_form.save(commit=False)
+			character.save()
+			return render(request, 'create-char-form.html',{'form': ch_form})
+	else:
+		ch_form = CharForm()
+	return render(request, 'create-char-form.html', {'form': ch_form})
 
 def statistic(request):
  all_gossip_num = Gossip.objects.all().count()
@@ -84,7 +122,6 @@ def statistic(request):
  "disappear_gossip_num": disappear_gossip_num };
 
  return render(request, "statistics.html", context=data)
-
 
 @login_required
 def mystories(request):
