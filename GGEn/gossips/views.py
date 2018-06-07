@@ -92,7 +92,7 @@ def gossip_new(request):
 		form = GossipForm(request.POST)
 		if form.is_valid():
 			gossip = form.save(commit=False)
-			gossip.create_date="2018-06-29"
+			gossip.create_date=datetime.now
 			gossip.is_enabled=True
 			gossip.user_id = request.user
 			gossip.save()
